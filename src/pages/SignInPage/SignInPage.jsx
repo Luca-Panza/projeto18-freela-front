@@ -45,7 +45,7 @@ export default function SignInPage() {
           onChange={e => setPassword(e.target.value)}
           >
         </input>
-        <button data-test="sign-in-submit">Sign In</button>
+        <button>Sign In</button>
       </form>
 
       <Link to={'/signUp'}>
