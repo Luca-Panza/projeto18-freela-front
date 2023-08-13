@@ -7,7 +7,7 @@ const SingUpContainerSC = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-image: url(./src/assets/c.gif);
+  background-image: url(./src/assets/flowerpot.gif);
   background-repeat: no-repeat;
   background-size: 40vh;
   background-position: right bottom;
