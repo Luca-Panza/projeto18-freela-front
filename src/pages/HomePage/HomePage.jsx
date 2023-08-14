@@ -4,25 +4,23 @@ import { AppContext } from '/src/context/AppContext';
 import Header from "/src/components/Header";
 import styled from "styled-components";
 
-import logo from "/src/assets/logo.png";
-
 export default function SignInPage() {
   const { user } = useContext(AppContext);
   const [data, setData] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     const config = { headers: { Authorization: user.token } };
     axios.get(`${import.meta.env.VITE_API_URL}/Home`, config)
       .then((res) => setData(res.data)) 
       .catch(e => alert(e.response.data.message));
-  }, []); 
+  }, [reload]); 
 
   function buyPlant (id) {
-		e.preventDefault();
+    const config = { headers: { Authorization: user.token } };
+    axios.put(`${import.meta.env.VITE_API_URL}/Home`, { id } ,config)
 
-    axios.post(`${import.meta.env.VITE_API_URL}/Buyplant`, { id })
-
-        .then((res) => {}) 
+        .then((res) => {setReload(!reload)}) 
         .catch(e => alert(e.response.data.message));
 
     }
@@ -33,15 +31,16 @@ export default function SignInPage() {
       <HomePageContainerSC>
       <ul>
         {data.map((item, index) => (
+          item.isAvailable === true && (
             <li key={index}>
-              <img src={logo} alt="Logo" />
+              <img src={item.image} alt="Logo" />
               <div>
-                <h2>Type: {item.typeId}</h2>
+                <h2>Type: {item.typeId === 1 ? "Seed" : "Plant"}</h2>
                 <h3>Price: {item.price}</h3>
-                <button onClick={() => {buyPlant(id)}}> Buy </button>
+                <button onClick={() => {buyPlant(item.id)}}> Buy </button>
               </div>
             </li>
-          ))}
+          )))}
       </ul>
       </HomePageContainerSC>
     </> 

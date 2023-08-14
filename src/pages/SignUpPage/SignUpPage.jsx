@@ -14,7 +14,7 @@ export default function SignUpPage() {
 		e.preventDefault();
     if(password !== confirmPassword) return alert("Different passwords, try again!");
       
-      axios.post(`${import.meta.env.VITE_API_URL}/signUp`, {name, email, password})
+      axios.post(`${import.meta.env.VITE_API_URL}/signUp`, {name, email, password, confirmPassword})
 
         .then((res) => {alert(res.data); navigate("/")}) 
         .catch(e => alert(e.response.data.message));

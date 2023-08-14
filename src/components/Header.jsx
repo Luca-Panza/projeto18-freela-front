@@ -17,7 +17,7 @@ export default function Header () {
       </div>
       <div>
         <MyPlants alt="Your Plants" onClick={() => {navigate("/MyPlants")}}/>
-        <ShoppingCart alt="Shopping cart" onClick={() => {navigate("/")}}/>
+        <ShoppingCart alt="Shopping cart" onClick={() => {navigate("/Home")}}/>
         <Account alt="Account" onClick={() => {navigate("/AddPlant")}}/>
       </div>
     </HeaderContainerSC>
